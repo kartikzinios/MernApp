@@ -36,7 +36,7 @@ app.use(function(err, req, res, next) {
 });
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/mern', { useMongoClient: true, promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb://root:test123@ds243084.mlab.com:43084/mern-db', { useMongoClient: true, promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
