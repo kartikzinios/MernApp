@@ -13,6 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log("app");
     axios.get('/api/user')
       .then(res => {
         this.setState({ users: res.data });

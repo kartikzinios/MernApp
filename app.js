@@ -9,11 +9,7 @@ var app = express();
 
 var mongoose = require('mongoose');
 
-mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/mern', { useMongoClient: true, promiseLibrary: require('bluebird') })
-  .then(() =>  console.log('connection successful'))
-  .catch((err) => console.error(err));
-
+app.set('view engine', 'html');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
@@ -36,7 +32,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json('error');
 });
+
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/mern', { useMongoClient: true, promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('connection successful'))
+  .catch((err) => console.error(err));
 
 module.exports = app;

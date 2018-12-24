@@ -6,6 +6,7 @@ var User = require('../models/User.js');
 /* GET ALL USERS */
 router.get('/', function(req, res, next) {
   User.find(function (err, products) {
+    console.log("users",products);
     if (err) return next(err);
     res.json(products);
   });
